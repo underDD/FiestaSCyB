@@ -141,7 +141,7 @@ void initialize_system(double *x, double *y, int N, double L, double sigma, bool
                 x[i] = randomIn(-Lx/2, Lx/2);
                 y[i] = randomIn(-Ly/2, Ly/2);
             }while(touches(i, x, y, sigma, Lx, N, grav) || touches_wall(i, x, y, sigma, Lx, Ly));
-            printf("Initialized particle %d at (%lf, %lf)\n", i, x[i], y[i]);
+            // printf("Initialized particle %d at (%lf, %lf)\n", i, x[i], y[i]);
         }
     }
     else{
@@ -162,6 +162,8 @@ void metropolis(double *x, double *y, double L, double sigma, double delta, int 
     double old_x, old_y, old_MSDx, old_MSDy;
     double Lx = L;
     double Ly = 10*Lx;
+
+    double kBT = 10.0;
 
     n = (int)randomIn(0, N);
     dx = delta*randomIn(-0.5, 0.5);
@@ -186,7 +188,7 @@ void metropolis(double *x, double *y, double L, double sigma, double delta, int 
         }
         
         if(delta_E > 0.0){
-            double prob = exp(-delta_E);
+            double prob = exp(-delta_E/kBT);
             if(randomIn(0.0, 1.0) > prob){
                 x[n] = old_x;
                 y[n] = old_y;
