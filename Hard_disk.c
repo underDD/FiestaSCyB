@@ -41,7 +41,7 @@ int main(){
     MCterm = 30000; // Number of MC steps for equilibration
     gravity = 1; // Gravity strength
     // L = sqrt((PI*sigma*sigma*N)/(4*phi)); // Box size
-    L = 12.5;
+    L = 39.633;
     phi = (PI*sigma*sigma*N)/(4*L*10*L);
     nbins = 75;
     b = (10*L)/nbins;
@@ -178,7 +178,7 @@ int main(){
 
     
     FILE *density_file;
-    sprintf(filename, "results/bonus_density_profile_grav_g%.2f_Lx%.1f_delta%.3f_nbin%d_T10.0.txt", gravity, L, delta, nbins);
+    sprintf(filename, "results/bonus_density_profile_grav_g%.2f_Lx%.1f_delta%.3f_nbin%d_T1.0.txt", gravity, L, delta, nbins);
     if ((density_file = fopen(filename, "w")) == NULL) {
         printf("Error opening file %s!\n", filename);
         return 1;

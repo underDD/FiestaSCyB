@@ -163,7 +163,7 @@ void metropolis(double *x, double *y, double L, double sigma, double delta, int 
     double Lx = L;
     double Ly = 10*Lx;
 
-    double kBT = 10.0;
+    double kBT = 1;
 
     n = (int)randomIn(0, N);
     dx = delta*randomIn(-0.5, 0.5);
